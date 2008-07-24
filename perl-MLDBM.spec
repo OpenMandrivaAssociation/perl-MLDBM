@@ -5,7 +5,7 @@
 Summary:	MLDBM - store multi-level hash structure in single level tied hash
 Name:		perl-%{real_name}
 Version:	2.01
-Release:	%mkrel 7
+Release:	%mkrel 9
 License:	GPL or Artistic
 Group:		Development/Perl
 URL:            http://search.cpan.org/dist/%{real_name}
