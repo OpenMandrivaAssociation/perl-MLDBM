@@ -1,18 +1,20 @@
+%define upstream_name    MLDBM
+%define upstream_version 2.01
+
 %define _requires_exceptions FreezeThaw
 
-%define real_name MLDBM
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
 
 Summary:	MLDBM - store multi-level hash structure in single level tied hash
-Name:		perl-%{real_name}
-Version:	2.01
-Release:	%mkrel 10
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-URL:            http://search.cpan.org/dist/%{real_name}
-Source0:	http://www.cpan.org/authors/id/C/CH/CHAMAS/%{real_name}-%{version}.tar.bz2
-BuildRequires:	perl-devel
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/authors/id/C/CH/CHAMAS/%{upstream_name}-%{upstream_version}.tar.bz2
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module can serve as a transparent interface to any TIEHASH package
@@ -36,7 +38,7 @@ above.  Using Storable is usually much faster than the other methods.
 See the BUGS section for important limitations.
 
 %prep
-%setup -q -n %{real_name}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -57,5 +59,3 @@ rm -rf %{buildroot}
 %doc Changes README
 %{perl_vendorlib}/MLDBM*
 %{_mandir}/*/*
-
-
