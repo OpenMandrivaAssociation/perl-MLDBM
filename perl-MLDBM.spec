@@ -1,5 +1,5 @@
 %define upstream_name    MLDBM
-%define upstream_version 2.01
+%define upstream_version 2.02
 
 %define _requires_exceptions FreezeThaw
 
@@ -11,7 +11,7 @@ Summary:	MLDBM - store multi-level hash structure in single level tied hash
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/authors/id/C/CH/CHAMAS/%{upstream_name}-%{upstream_version}.tar.bz2
+Source0:    http://www.cpan.org/authors/id/C/CH/CHAMAS/%{upstream_name}-%{upstream_version}.zip
 
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
@@ -45,7 +45,7 @@ See the BUGS section for important limitations.
 %make
 
 %check
-make test
+%make test
 
 %install
 rm -rf %{buildroot}
