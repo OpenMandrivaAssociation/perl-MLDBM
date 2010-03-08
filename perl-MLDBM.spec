@@ -1,5 +1,5 @@
 %define upstream_name    MLDBM
-%define upstream_version 2.03
+%define upstream_version 2.04
 
 %define _requires_exceptions FreezeThaw
 
