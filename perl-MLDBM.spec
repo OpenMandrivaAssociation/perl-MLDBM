@@ -1,20 +1,21 @@
 %define upstream_name    MLDBM
 %define upstream_version 2.04
 
-%define _requires_exceptions FreezeThaw
+# why not?
+#define _requires_exceptions FreezeThaw
 
-Name:       perl-%{upstream_name}
-Version:    %perl_convert_version %{upstream_version}
-Release:    %mkrel 1
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	2
 
 Summary:	MLDBM - store multi-level hash structure in single level tied hash
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:        http://search.cpan.org/dist/%{upstream_name}
-Source0:    http://www.cpan.org/authors/id/C/CH/CHAMAS/%{upstream_name}-%{upstream_version}.tar.gz
+Url:		http://search.cpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/authors/id/C/CH/CHAMAS/%{upstream_name}-%{upstream_version}.tar.gz
 
+BuildRequires:	perl-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 This module can serve as a transparent interface to any TIEHASH package
@@ -41,21 +42,61 @@ See the BUGS section for important limitations.
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
+perl Makefile.PL INSTALLDIRS=vendor
 %make
 
 %check
 %make test
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root)
 %doc Changes README
 %{perl_vendorlib}/MLDBM*
 %{_mandir}/*/*
+
+
+%changelog
+* Mon Mar 08 2010 Jérôme Quelin <jquelin@mandriva.org> 2.40.0-1mdv2010.1
++ Revision: 515752
+- update to 2.04
+
+* Sun Feb 28 2010 Jérôme Quelin <jquelin@mandriva.org> 2.30.0-1mdv2010.1
++ Revision: 512614
+- update to 2.03
+
+* Tue Feb 23 2010 Jérôme Quelin <jquelin@mandriva.org> 2.20.0-1mdv2010.1
++ Revision: 510092
+- update to 2.02
+
+* Mon Aug 03 2009 Jérôme Quelin <jquelin@mandriva.org> 2.10.0-1mdv2010.0
++ Revision: 407801
+- rebuild using %%perl_convert_version
+
+* Thu Jul 31 2008 Thierry Vignaud <tv@mandriva.org> 2.01-10mdv2009.0
++ Revision: 257846
+- rebuild
+
+* Thu Jul 24 2008 Thierry Vignaud <tv@mandriva.org> 2.01-9mdv2009.0
++ Revision: 245879
+- rebuild
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 2.01-7mdv2008.1
++ Revision: 136288
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Sun Jan 14 2007 Olivier Thauvin <nanardon@mandriva.org> 2.01-7mdv2007.0
++ Revision: 108473
+- rebuild
+
+  + Guillaume Rousse <guillomovitch@mandriva.org>
+    - Import perl-MLDBM
+
+* Sat Jul 16 2005 Oden Eriksson <oeriksson@mandriva.com> 2.01-6mdk
+- fixup
+
