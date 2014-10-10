@@ -6,7 +6,7 @@
 
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	2
+Release:	3
 
 Summary:	MLDBM - store multi-level hash structure in single level tied hash
 License:	GPL+ or Artistic
